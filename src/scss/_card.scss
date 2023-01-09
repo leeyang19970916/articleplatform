@@ -1,0 +1,22 @@
+.CardTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    .CardTitle-title{
+   background-color: plum;
+   color: white;
+   font-weight: bolder;
+   width: 50%;
+   border-radius: 10px;
+   padding-left: 0.25rem;
+    }
+    .CardTitle-button {
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        div{
+            margin: 0 0.5rem;
+        }
+    }
+}
