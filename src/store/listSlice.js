@@ -15,17 +15,32 @@ const listSlice=createSlice({
             state.push(action.payload)
         },
         removeList(state,action){
-            state.filter((e)=>e.id===action.payload)
-            console.log(action,"action",state)
-            // state=[...action.payload]
-            // console.log(action,"會經過action")
-            // state=state.filter((e)=>e.id===action.payload)
-            // state=state.filter((item)=>item.id!==action.payload)
-            // state=state.filter((item)=>console.log(item,"item"))
-
+            state.forEach((e)=>{
+                if (e.id===action.payload) {
+                    e.status="trash"
+                }
+            })
+        },
+        recoverList(state,action){
+            state.forEach((e)=>{
+                if (e.id===action.payload) {
+                    e.status="normal"
+                }
+            })
+        },
+        updateList(state,action){
+            state.forEach((e)=>{
+                if (e.id===action.payload.id) {
+                    e={...action.payload}
+                }
+            })
+        },
+        completeDelete(state,action){
+            
+            return state.filter(item => item.id !== action.payload);
         }
     }
 })
-export const {addList,removeList}=listSlice.actions
+export const {addList,removeList,recoverList,completeDelete,updateList}=listSlice.actions
 
 export default listSlice.reducer

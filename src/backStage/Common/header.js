@@ -6,7 +6,10 @@ if (title==="ArticleList") {
     titleUI="文章列表"
 }else if(title==="ArticleContent"){
     titleUI="新增文章"
-}else{
+}else if(title==="editArticleContent"){
+    titleUI="編輯文章"
+}
+else{
     titleUI="垃圾桶"
 }
 
