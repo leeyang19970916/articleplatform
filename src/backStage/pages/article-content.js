@@ -49,8 +49,9 @@ const ArticleContent = () => {
             return
         }
         // dispatch.imageHandler(img)
+        console.log(img,"iamsssss")
         tempArticleObj.image = img
-        // console.log(img)
+        
     }
     return (<div className="px-3 py-3">
         <Header title="ArticleContent"></Header>

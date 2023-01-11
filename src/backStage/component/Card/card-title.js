@@ -6,6 +6,7 @@ const CardTitle = (props) => {
     const dispatch = useDispatch()
     let normalIsShown = true
     let { title, time, id, status } = props.item
+    console.log(props.item,"item")
     const editHandler = () => {
         goPath.push(`/EditingArticle/${id}`)
     }

@@ -13,8 +13,18 @@ const EditingArticle = () => {
     const dispatch = useDispatch();
     const list = useSelector(state => state.list)
     const assignArticle = list.filter(item => (item.id + "") === (id + ""))[0]
+    console.log('assignArticle你典編輯的那個obj，完全體 大套的', assignArticle)
     if (!assignArticle.id) {
-        return
+        return <div>錯誤錯誤 沒有撈到ID</div>
+    }
+    let a = {
+        status: 'normal',
+        id: 0.27855210160394317,
+        title: '10',
+        content: '',
+        image: '',
+        time:"",
+        tagsa:[]
     }
     let tempArticleObj = {
         status: "",
@@ -27,10 +37,12 @@ const EditingArticle = () => {
     }
     // 在這裡彙整包一包 送給store 以上
     const formHandler = (obj) => {
-        let { id, title, content, time, status, edit } = obj
+        // console.log(assignArticle,"formHandler")
+        // let { title, content, time, status, edit } = obj
+   
         tempArticleObj = {
             ...tempArticleObj,
-            id, title, content, time, status, edit
+            ...obj,
         }
         // console.log(edit, "editttt")
         // if (edit) {
@@ -38,6 +50,7 @@ const EditingArticle = () => {
         // } else {
         //     dispatch(updateList(tempArticleObj))
         // }
+        // console.log(tempArticleObj,"tempArticleObj")
         dispatch(updateList(tempArticleObj))
 
         // dispatch(singleArticle(tempArticleObj))
