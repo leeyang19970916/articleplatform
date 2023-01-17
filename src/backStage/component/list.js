@@ -4,9 +4,7 @@ import { useSelector } from "react-redux"
 // import arr from "./"
 const List = (props) => {
 let artList=useSelector(state=>{
-    console.log(state,"statee")
     return state.list})
-console.log(artList,"artlist正式姬")
 let {status}=props
 let UIList=[]
 if (status==="normal") {

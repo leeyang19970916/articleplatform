@@ -1,6 +1,6 @@
 // import { Fragment } from "react"
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 const nowToday = () => {
     let Today = new Date();
@@ -25,14 +25,14 @@ const nowToday = () => {
     return todayDate
 }
 const Form = (props) => {
-
+console.log(props,"props")
     const [titleState, setTitleState] = useState("");
     const [contentState, setContentState] = useState("");
     const goPath = useHistory();
     let time = nowToday()
     let editStatus = props.edit
 
-    console.log(props, "article")
+    // console.log(props, "article")
     useEffect(() => {
         if (editStatus) {
             setTitleState(props.article.title)
@@ -56,8 +56,6 @@ const Form = (props) => {
         })
         setTitleState("")
         setContentState("")
-        // 連同tag和圖片 和id整組包一個丟出去給store
-        // useDispatch
     }
     function updateHandler(e) {
         e.preventDefault()
@@ -75,24 +73,8 @@ const Form = (props) => {
         })
         setTitleState("")
         setContentState("")
-        console.log("更新按鈕")
     }
-    //     e.preventDefault()
-    //     if (!titleState && !contentState) {
-    //         return
-    //     }
-    //     props.form({
-    //         edit: true,
-    //         time,
-    //         id: Math.random(),
-    //         title: titleState,
-    //         content: contentState,
-    //         status: "normal"
-    //     })
-    //     console.log(contentState, "contentState", titleState, "titleState")
-    //     setTitleState("")
-    //     setContentState("")
-    // }
+
     function cancelHandler() {
         setTitleState("")
         setContentState("")

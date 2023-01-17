@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom"
 import { removeList,recoverList,completeDelete } from "../../../store/listSlice";
-const CardTitle = (props) => {
+const CardList = (props) => {
     const goPath = useHistory();
     const dispatch = useDispatch()
     let normalIsShown = true
     let { title, time, id, status } = props.item
-    console.log(props.item,"item")
     const editHandler = () => {
         goPath.push(`/EditingArticle/${id}`)
     }
@@ -40,4 +39,4 @@ const CardTitle = (props) => {
             </div>
         </div>)
 }
-export default CardTitle
+export default CardList

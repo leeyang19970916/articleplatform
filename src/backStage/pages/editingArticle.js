@@ -17,15 +17,6 @@ const EditingArticle = () => {
     if (!assignArticle.id) {
         return <div>錯誤錯誤 沒有撈到ID</div>
     }
-    let a = {
-        status: 'normal',
-        id: 0.27855210160394317,
-        title: '10',
-        content: '',
-        image: '',
-        time:"",
-        tagsa:[]
-    }
     let tempArticleObj = {
         status: "",
         id: "",
@@ -37,42 +28,28 @@ const EditingArticle = () => {
     }
     // 在這裡彙整包一包 送給store 以上
     const formHandler = (obj) => {
-        // console.log(assignArticle,"formHandler")
-        // let { title, content, time, status, edit } = obj
-   
         tempArticleObj = {
             ...tempArticleObj,
-            ...obj,
+            ...assignArticle,
+            ...obj
         }
-        // console.log(edit, "editttt")
-        // if (edit) {
-        //     dispatch(addList(tempArticleObj))
-        // } else {
-        //     dispatch(updateList(tempArticleObj))
-        // }
-        // console.log(tempArticleObj,"tempArticleObj")
+        console.log(tempArticleObj, "tempArticleObj這邊拉", obj)
         dispatch(updateList(tempArticleObj))
-
-        // dispatch(singleArticle(tempArticleObj))
-
         goPath.push(`/ArticleList`)
-        // setIsConFirm(true)
-        // dispatch.formHandler(obj)
-
-        // console.log(obj,"obj")
     }
     const tagHandler = (tag) => {
-        // dispatch.tagsHandler(tag)
-        tempArticleObj.tags = [...tag]
-        // console.log(tag,"list")
+        let { tags } = assignArticle
+        console.log(tag, "taggg")
+        tempArticleObj.tags = [
+            ...tags,
+            ...tag]
     }
     const imageHandler = (img) => {
         if (!img) {
             return
         }
-        // dispatch.imageHandler(img)
-        tempArticleObj.image = img
-        // console.log(img)
+        let {image}=assignArticle
+        tempArticleObj.image=image
     }
     return (<div className="px-3 py-3">
         <Header title="editArticleContent"></Header>
@@ -85,7 +62,6 @@ const EditingArticle = () => {
                 <EditImage edit={true} article={assignArticle} image={imageHandler}></EditImage>
             </aside>
         </div>
-
     </div>)
 }
 export default EditingArticle

@@ -26,12 +26,13 @@ const ArticleContent = () => {
     }
     // 在這裡彙整包一包 送給store 以上
     const formHandler = (obj) => {
-        let { id, title, content, time, status } = obj
+   
         tempArticleObj = {
             ...tempArticleObj,
-            id, title, content, time, status
+            ...obj
         }
         // dispatch(singleArticle(tempArticleObj))
+        console.log("更新? 不是吧 這是用add欸==")
         dispatch(addList(tempArticleObj))
         goPath.push(`/ArticleList`)
         // setIsConFirm(true)
@@ -49,7 +50,6 @@ const ArticleContent = () => {
             return
         }
         // dispatch.imageHandler(img)
-        console.log(img,"iamsssss")
         tempArticleObj.image = img
         
     }

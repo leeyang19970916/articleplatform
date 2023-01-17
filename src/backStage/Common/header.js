@@ -8,6 +8,8 @@ if (title==="ArticleList") {
     titleUI="新增文章"
 }else if(title==="editArticleContent"){
     titleUI="編輯文章"
+}else if (title==="tagPage") {
+    titleUI="標籤管理"
 }
 else{
     titleUI="垃圾桶"

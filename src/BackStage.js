@@ -6,6 +6,7 @@ import EditingArticle from "./backStage/pages/editingArticle";
 import { Switch, Redirect, Route } from "react-router-dom";
 import Navbar from "./backStage/Common/navbar";
 import "./scss/backStage.scss"
+import TagMangement from "./backStage/pages/tagsManage"
 function BackStage() {
   return (
     <div className="blockzone">
@@ -29,6 +30,9 @@ function BackStage() {
           </Route>
           <Route path="/EditingArticle/:articleId" exact>
             <EditingArticle></EditingArticle>
+          </Route>
+          <Route path="/TagMangement" exact>
+            <TagMangement></TagMangement>
           </Route>
 
 

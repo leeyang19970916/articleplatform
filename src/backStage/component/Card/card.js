@@ -1,6 +1,6 @@
 import "../../../scss/_card.scss"
 import TagsList from "./card-tagsList";
-import CardTitle from "./card-title";
+import CardList from "./cardList";
 const Card = (props) => {
     let {tags}=props.object
     let articleDetail={
@@ -9,7 +9,7 @@ const Card = (props) => {
     return (
         <div className="border px-2 py-2 ">
             {tags &&<TagsList tags={tags} ></TagsList>}
-            <CardTitle item={articleDetail}></CardTitle>
+            <CardList item={articleDetail}></CardList>
         </div>
     )
 }
