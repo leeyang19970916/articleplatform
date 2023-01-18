@@ -6,7 +6,8 @@ import { addTag } from "../../store/tagsSlice";
 import { removeTag } from "../../store/tagsSlice";
 const initInput = {
     id: "",
-    value: ""
+    value: "",
+    active:false
 }
 const Tag = () => {
     let dispatch = useDispatch()
@@ -16,7 +17,8 @@ const Tag = () => {
         let value = e.target.value.trim()
         setTagInput({
             id: Math.random() + "",
-            value: value
+            value: value,
+            active:false
         })
     }
     const tagHandler = () => {

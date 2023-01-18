@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"
 const List = (props) => {
 let artList=useSelector(state=>{
     return state.list})
+    console.log(artList,"artList")
 let {status}=props
 let UIList=[]
 if (status==="normal") {
@@ -14,7 +15,7 @@ if (status==="normal") {
 }
     return (<Fragment >
         {!UIList.length ? <div className="text-center  py-3 text-primary">沒有資料</div> 
-        :UIList.map((item)=><Card key={item.id}  object={item}></Card>)}
+        :UIList.map((item)=><Card key={item.id}  item={item}></Card>)}
     </Fragment>)
 
 }

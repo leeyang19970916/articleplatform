@@ -12,20 +12,21 @@ const listSlice=createSlice({
     initialState:initList,
     reducers:{
         addList(state,action){
-            
-            state.push(action.payload)
+            let item=action.payload
+            state.push(item)
         },
         removeList(state,action){
+            let id=action.payload
             state.forEach((e)=>{
-                if (e.id===action.payload) {
+                if (e.id===id) {
                     e.status="trash"
                 }
             })
         },
         recoverList(state,action){
-            
+            let id=action.payload
             state.forEach((e)=>{
-                if (e.id===action.payload) {
+                if (e.id===id) {
                     e.status="normal"
                 }
             })
@@ -46,8 +47,8 @@ const listSlice=createSlice({
             })
         },
         completeDelete(state,action){
-            
-            return state.filter(item => item.id !== action.payload);
+            let id=action.payload
+            return state.filter(item => item.id !== id);
         }
     }
 })

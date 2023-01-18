@@ -1,6 +1,8 @@
 // import { Fragment } from "react"
 import { useState, useEffect } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {addContentAndTitle} from "../../../store/articleSlice"
+import { addList,updateList } from "../../../store/listSlice";
 import { useHistory } from "react-router-dom";
 const nowToday = () => {
     let Today = new Date();
@@ -24,53 +26,87 @@ const nowToday = () => {
     }
     return todayDate
 }
-const Form = (props) => {
-console.log(props,"props")
+const Form = () => {
+// console.log(props,"props")
+let dispatch=useDispatch()
     const [titleState, setTitleState] = useState("");
     const [contentState, setContentState] = useState("");
+    // 這邊有標題和內文 都丟給STORE
+    // 然後確認或更新 再推上去 然後全部內容都歸零
+    // 放棄全部歸零 
+    // 取消 不要儲存 剛剛的更新內容
     const goPath = useHistory();
     let time = nowToday()
-    let editStatus = props.edit
 
     // console.log(props, "article")
-    useEffect(() => {
-        if (editStatus) {
-            setTitleState(props.article.title)
-            setContentState(props.article.content)
-        }
+    // useEffect(() => {
+    //     if (editStatus) {
+    //         setTitleState(props.article.title)
+    //         setContentState(props.article.content)
+    //     }
 
-    }, [props.article.content,props.article.title])
-
+    // }, [props.article.content,props.article.title])
+    let formalArticle={
+        newTime:"",
+        originalTime:time,
+        id: Math.random()+"",
+        title:titleState,
+        content: contentState,
+        status: "normal",
+        edit: false,
+    }
     function confirmHandler(e) {
         e.preventDefault()
         if (!titleState && !contentState) {
             return
         }
-        props.form({
-            edit: editStatus,
-            time,
-            id: Math.random(),
-            title: titleState,
+        formalArticle={
+            newTime:"",
+            originalTime:time,
+            id: Math.random()+"",
+            title:titleState,
             content: contentState,
-            status: "normal"
-        })
+            status: "normal",
+            edit: false,
+        }
+        dispatch(addContentAndTitle(formalArticle))
+        dispatch(addList(formalArticle))
+        
+        // props.form({
+        //     edit: editStatus,
+        //     time,
+        //     id: Math.random(),
+        //     title: titleState,
+        //     content: contentState,
+        //     status: "normal"
+        // })
         setTitleState("")
         setContentState("")
     }
     function updateHandler(e) {
         e.preventDefault()
-        let {id}=props.article
+        // let {id}=props.article
         if (!titleState && !contentState) {
             return
         }
-        props.form({
-            edit: editStatus,
-            title: titleState,
+        formalArticle={
+            ...formalArticle,
+            newTime:time,
+            title:titleState,
             content: contentState,
-            status: "normal",
-            time,
-            id
-        })
+            edit: true,
+        }
+        dispatch(addContentAndTitle(formalArticle))
+        dispatch(updateList(formalArticle))
+        
+        // props.form({
+        //     edit: editStatus,
+        //     title: titleState,
+        //     content: contentState,
+        //     status: "normal",
+        //     time,
+        //     id
+        // })
         setTitleState("")
         setContentState("")
     }
@@ -99,7 +135,7 @@ console.log(props,"props")
             </div>
             <div className="border w-100 pt-3 d-flex  justify-content-end " >
                 <div className="w-50 d-flex">
-                    {editStatus ? <button className="btn btn-warning w-100 mx-1"
+                    {formalArticle.edit ? <button className="btn btn-warning w-100 mx-1"
                         onClick={updateHandler}>更新</button>
                         : <button className="btn btn-success w-100 mx-1"
                             onClick={confirmHandler}>確認</button>}

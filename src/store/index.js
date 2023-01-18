@@ -10,7 +10,7 @@ import listSlice from "./listSlice";
 const store=configureStore({
     reducer:{
         // key:Value
-        // article:articleSlice,
+        article:articleSlice,
         list:listSlice,
         tagList:tagsSlice
     }
