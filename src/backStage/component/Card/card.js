@@ -2,7 +2,6 @@ import "../../../scss/_card.scss"
 import TagsList from "./card-tagsList";
 import CardList from "./cardList";
 const Card = (props) => {
-    // console.log(props,"好亂你媽機掰")
     let item=props.item
     let {tags}=item
 

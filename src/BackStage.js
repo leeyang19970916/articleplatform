@@ -16,7 +16,7 @@ function BackStage() {
       </nav>
       <main>
         <Switch>
-          <Route path="/" exact>
+          <Route path="/">
             <Redirect to="/ArticleList"></Redirect>
           </Route>
           <Route path="/ArticleList">

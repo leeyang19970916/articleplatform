@@ -1,9 +1,10 @@
 // import { Fragment } from "react"
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {addContentAndTitle} from "../../../store/articleSlice"
-import { addList,updateList } from "../../../store/listSlice";
+import { addContentAndTitle } from "../../../store/articleSlice"
+import { addList, updateList } from "../../../store/listSlice";
 import { useHistory } from "react-router-dom";
+import { useRef } from "react";
 const nowToday = () => {
     let Today = new Date();
     let month = ""
@@ -26,110 +27,100 @@ const nowToday = () => {
     }
     return todayDate
 }
-const Form = () => {
-// console.log(props,"props")
-let dispatch=useDispatch()
-    const [titleState, setTitleState] = useState("");
-    const [contentState, setContentState] = useState("");
+const Form = (props) => {
+    console.log(props,"注意注意")
+    let {edit,article}=props
+
+
+    const titleInputRef = useRef(null)
+    const contentInputRef = useRef(null)
+    let dispatch = useDispatch()
     // 這邊有標題和內文 都丟給STORE
     // 然後確認或更新 再推上去 然後全部內容都歸零
     // 放棄全部歸零 
     // 取消 不要儲存 剛剛的更新內容
+
+    useEffect(() => {
+        if (!edit) {
+            contentInputRef.current.value=article.content
+            titleInputRef.current.value=article.title
+        }
+    }, [edit]);
     const goPath = useHistory();
     let time = nowToday()
-
-    // console.log(props, "article")
-    // useEffect(() => {
-    //     if (editStatus) {
-    //         setTitleState(props.article.title)
-    //         setContentState(props.article.content)
-    //     }
-
-    // }, [props.article.content,props.article.title])
-    let formalArticle={
-        newTime:"",
-        originalTime:time,
-        id: Math.random()+"",
-        title:titleState,
-        content: contentState,
+    let formalArticle = {
+        newTime: "",
+        originalTime: time,
+        id: Math.random() + "",
+        title: "",
+        content: "",
         status: "normal",
         edit: false,
     }
     function confirmHandler(e) {
+        let contentInputValue=contentInputRef.current.value
+        let titleInputValue=titleInputRef.current.value
         e.preventDefault()
-        if (!titleState && !contentState) {
+        if (!titleInputValue && !contentInputValue) {
             return
         }
-        formalArticle={
-            newTime:"",
-            originalTime:time,
-            id: Math.random()+"",
-            title:titleState,
-            content: contentState,
+        formalArticle = {
+            newTime: "",
+            originalTime: time,
+            id: Math.random() + "",
+            title: titleInputValue,
+            content: contentInputValue,
             status: "normal",
             edit: false,
         }
+        titleInputRef.current.value=""
+        contentInputRef.current.value=""
         dispatch(addContentAndTitle(formalArticle))
         dispatch(addList(formalArticle))
-        
-        // props.form({
-        //     edit: editStatus,
-        //     time,
-        //     id: Math.random(),
-        //     title: titleState,
-        //     content: contentState,
-        //     status: "normal"
-        // })
-        setTitleState("")
-        setContentState("")
+
     }
     function updateHandler(e) {
+        let contentInputValue=contentInputRef.current.value
+        let titleInputValue=titleInputRef.current.value
         e.preventDefault()
-        // let {id}=props.article
-        if (!titleState && !contentState) {
+        if (!titleInputValue && !contentInputValue) {
             return
         }
-        formalArticle={
+        formalArticle = {
             ...formalArticle,
-            newTime:time,
-            title:titleState,
-            content: contentState,
+            newTime: time,
+            title: titleInputValue,
+            content: contentInputValue,
             edit: true,
         }
+        titleInputRef.current.value=""
+        contentInputRef.current.value=""
         dispatch(addContentAndTitle(formalArticle))
         dispatch(updateList(formalArticle))
-        
-        // props.form({
-        //     edit: editStatus,
-        //     title: titleState,
-        //     content: contentState,
-        //     status: "normal",
-        //     time,
-        //     id
-        // })
-        setTitleState("")
-        setContentState("")
+
     }
 
     function cancelHandler() {
-        setTitleState("")
-        setContentState("")
+       titleInputRef.current.value=""
+       contentInputRef.current.value=""
         goPath.push(`/ArticleList`)
+
     }
 
     return (
         <form className="px-5">
             <div className="form-floating mb-3">
                 <input type="text"
-                    onChange={(e) => setTitleState(e.target.value)}
-                    value={titleState} className="form-control"
+                    className="form-control"
+                    ref={titleInputRef}
+           
                     id="floatingInput" placeholder="輸入標題..." />
-                <label htmlFor="floatingInput" >輸入標題</label>
+                <label htmlFor="floatingInput" >標題</label>
             </div>
             <div className="form-floating">
                 <textarea className="form-control"
-                    onChange={(e) => setContentState(e.target.value)}
-                    value={contentState} style={{ minHeight: "60vh" }}
+                    ref={contentInputRef}
+                    style={{ minHeight: "60vh" }}
                     placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                 <label htmlFor="floatingTextarea">輸入內容</label>
             </div>

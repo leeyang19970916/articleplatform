@@ -1,12 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initList=[]
-// {
-//     id:"",
-//     title:"",
-//     content:"",
-//     image:"",
-//     tags:[]
-// }
 const listSlice=createSlice({
     name:"articleList",
     initialState:initList,
@@ -32,9 +25,6 @@ const listSlice=createSlice({
             })
         },
         updateList(state,action){
-            // let newItem=action.payload
-            // const existingItem=state.find(item=>item.id===newItem.id)
-            // console.log(existingItem,"eeexxxist")
             state.forEach((e)=>{
                 if (e.id===action.payload.id) {
                     console.log("一個")
