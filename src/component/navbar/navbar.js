@@ -8,6 +8,9 @@ const Navbar = () => {
 
     return (
         <nav className="py-3 px-2">
+                        <NavLink activeClassName="btn-success text-white" 
+            className="btn btn-outline-white text-dark w-100 mb-1" 
+            to="/home">首頁</NavLink>
             <NavLink activeClassName="btn-success text-white" 
             className="btn btn-outline-white text-dark w-100 mb-1" 
             to="/addArticle">新增文章</NavLink>

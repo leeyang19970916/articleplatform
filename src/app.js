@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react"
 import { Route, } from "react-router-dom"
 import Navbar from "./component/navbar/navbar";
-import Major from "./component/major/major";
+import Main from "./component/main/main";
 // const className = {
 
 // }
@@ -17,7 +17,7 @@ const App = () => {
                 <Navbar></Navbar>
             </div>
             <div className="h-100 bg-light px-3 py-3" style={{ width: '85%' }}>
-                <Major></Major>
+                <Main></Main>
             </div>
 
         </div>
