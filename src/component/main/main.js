@@ -24,6 +24,9 @@ const Main = () => {
                 <Route path="/editArticle/:id" >
                     {/* 編輯文章 加ID */}
                 </Route>
+                <Route path="/tagManagement" >
+                    {/* 標籤管理 */}
+                </Route>
                 <Route path="/preview/:id" >
                     {/* 文章預覽前台UI */}
                 </Route>

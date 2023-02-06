@@ -1,0 +1,25 @@
+table {
+    background: white;
+    border-radius: 10px;
+
+    tbody {
+        th {
+            border-style: none;
+        }
+
+        td {
+            border-style: none;
+            .mainTitle{
+                font-size:x-large
+            }
+            .minTitle{
+                font-size: medium;
+            }
+            .date{
+                text-align: right;
+                font-size: xx-small;
+            }
+        }
+
+    }
+}

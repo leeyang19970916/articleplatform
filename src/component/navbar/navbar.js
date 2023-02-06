@@ -7,16 +7,18 @@ import NavbarItem from "./navbarItem"
 const Navbar = () => {
 
     return (
-        <nav className="py-3 px-2">
-                        <NavLink activeClassName="btn-success text-white" 
-            className="btn btn-outline-white text-dark w-100 mb-1" 
-            to="/home">首頁</NavLink>
-            <NavLink activeClassName="btn-success text-white" 
-            className="btn btn-outline-white text-dark w-100 mb-1" 
-            to="/addArticle">新增文章</NavLink>
-                        <NavLink activeClassName="btn-success text-white" 
-            className="btn btn-outline-white text-dark w-100 mb-1" 
-            to="/articleList">文章列表</NavLink>
+        <nav className="py-2 px-1">
+            <NavLink activeClassName="btn-info text-white"
+                className="btn btn-secondary text-white text-start w-100 mb-2"
+                to="/home">首頁</NavLink>
+                            <NavLink activeClassName="btn-info text-white"
+                className="btn btn-secondary text-white text-start w-100 mb-2"
+                to="/articleList">文章</NavLink>
+                            <NavLink activeClassName="btn-info text-white"
+                className="btn btn-secondary text-white text-start w-100 mb-2"
+                to="/addArticle">新增</NavLink>
+
+
         </nav>
     )
 }
