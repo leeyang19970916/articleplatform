@@ -3,8 +3,7 @@ import { Route, NavLink } from "react-router-dom"
 
 const TableTags = (props) => {
     let { item, status } = props
-    let showTag = true
-    if (!item) {
+    if (!item.length) {
         return
     }
 
@@ -13,18 +12,18 @@ const TableTags = (props) => {
     }
 
 
-
+console.log(item,"ppapppp")
 
     if (status === "tags") {
         return (
             <div className="d-flex">
-                {item.map(e => <div className="btn text-primary px-1" onClick={red}>#{e}</div>)}
+                {item.map(e => <div key={e.id} className="btn text-primary px-1 d-table" onClick={red}>#{e.name}</div>)}
             </div>
         )
     } else {
         return (
-            <div className="d-block">
-                {item.map(e => <div className=" text-primary px-1" onClick={red}>{e}</div>)}
+            <div>
+                {item.map(e => <div key={e.id} className="btn  text-primary px-1 d-table border"  onClick={red}>{e.name}</div>)}
             </div>
         )
 
