@@ -3,6 +3,28 @@
     section{
         width: 50%;
         border: 2px solid saddlebrown;
-        
+        .tag-btn{
+            position: relative;
+            a{
+                text-decoration: none;
+                border-radius: 50%;
+                background-color: white;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                font-size: 50%;
+                top:0 ;
+                right: 0;
+                transform: translate(50%, -50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid rgb(46,117,171);
+                &:hover{
+                    color:  #e0505e !important;
+                    border: #e0505e 1px solid;
+                }
+            }
+        }
     }
 }
