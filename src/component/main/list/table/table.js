@@ -1,6 +1,7 @@
 import React, { Fragment } from "react"
 import { Route, NavLink } from "react-router-dom"
 import ListItem from "./list_item"
+import Pages from "./pages"
 const array = [
     {
         id: "x1", image: "123", mainTitle: "qqqqq", minTitle: "aaaaaa",
@@ -90,26 +91,28 @@ const Table = () => {
     // map打listItem渲染出來
     const listUI = array.map(item => <ListItem key={item.id} item={item}></ListItem>)
     return (
+        <Fragment>
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col"  style={{width:"1%"}}></th>
+                        <th scope="col" style={{width:"10%"}}>預覽圖</th>
+                        <th scope="col" style={{width:"30%"}} className="tableTitle">標題</th>
+                        <th scope="col" style={{width:"10%"}}>標籤</th>
+                        <th scope="col" style={{width:"10%"}}>分類</th>
+                        <th scope="col"  style={{width:"1%"}}>眼</th>
+                        <th scope="col"  style={{width:"1%"}}>收</th>
+                        <th scope="col"  style={{width:"1%"}}>分</th>
+                        <th scope="col"  style={{width:"5%"}}></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {listUI}
 
-        <table className="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">預覽圖</th>
-                    <th scope="col">標題</th>
-                    <th scope="col">標籤</th>
-                    <th scope="col">分類</th>
-                    <th scope="col">眼睛</th>
-                    <th scope="col">收藏</th>
-                    <th scope="col">分享</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {listUI}
-
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+            <Pages></Pages>
+        </Fragment>
     )
 }
 export default Table

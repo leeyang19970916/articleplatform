@@ -1,8 +1,16 @@
 .sort{
     border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
     section{
         width: 50%;
-        border: 2px solid saddlebrown;
+        input{
+            background-color:#F1F1F1;
+        }
+        select{
+            background-color: #F1F1F1;
+        }
         .tag-btn{
             position: relative;
             a{

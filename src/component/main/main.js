@@ -2,6 +2,7 @@ import React, { Fragment } from "react"
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./home";
 import List from "./list/list";
+import Write from "./write/write";
 // const className = {
 
 // }
@@ -19,6 +20,7 @@ const Main = () => {
                     {/* 文章列表 */}
                 </Route>
                 <Route path="/addArticle" exact>
+                    <Write></Write>
                     {/* 新增文章 */}
                 </Route>
                 <Route path="/editArticle/:id" >

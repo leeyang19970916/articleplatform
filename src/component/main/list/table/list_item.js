@@ -5,9 +5,9 @@ import TableTags from "./tableTags"
 const ListItem = (props) => {
     let { item } = props
     console.log(item, "itemeee")
-    let {mainTitle,minTitle,date,id,category,like,view,share,tags}=item
-    let TITLE={
-        mainTitle,minTitle,date
+    let { mainTitle, minTitle, date, id, category, like, view, share, tags } = item
+    let TITLE = {
+        mainTitle, minTitle, date
     }
     // title 
     // min title
@@ -17,18 +17,30 @@ const ListItem = (props) => {
     return (
         <tr>
             <th scope="row">
-                <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <div className="form-check d-flex justify-content-center">
+                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                 </div>
             </th>
             <td>image</td>
-            <td><TableTitle item={TITLE}/></td>
-            <td>{tags&&<TableTags status={"tags"} item={tags}></TableTags>}</td>
-            <td>{category&&<TableTags status={"category"} item={category}></TableTags>}</td>
+            <td className="tableTitle"><TableTitle item={TITLE} /></td>
+            <td>{tags && <TableTags status={"tags"} item={tags}></TableTags>}</td>
+            <td>{category && <TableTags status={"category"} item={category}></TableTags>}</td>
             <td>{view}</td>
             <td>{like}</td>
             <td>{share}</td>
-            <td>...</td>
+            <td>
+                <div className="btn-group">
+                    <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        ...
+                    </button>
+                    <ul className="dropdown-menu">
+                        <li><a className="dropdown-item" href="#">Action</a></li>
+                        <li><a className="dropdown-item" href="#">Another action</a></li>
+                        <li><a className="dropdown-item" href="#">Something else here</a></li>
+                        <li><a className="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </td>
         </tr>
     )
 }

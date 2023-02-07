@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react"
 import { Route, } from "react-router-dom"
 import Navbar from "./component/navbar/navbar";
 import Main from "./component/main/main";
+// import {}
 // const className = {
 
 // }

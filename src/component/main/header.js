@@ -7,7 +7,6 @@ import { Route, NavLink } from "react-router-dom"
 const Header = (props) => {
 let {title}=props
 let titleUI="首頁"
-console.log(title,"title")
 if (title==="list") {
     titleUI="文章"
 }

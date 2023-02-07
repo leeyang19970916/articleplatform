@@ -8,6 +8,11 @@ table {
         }
 
         td {
+            padding-top: 0;
+            padding-bottom: 0;
+            &.tableTitle{
+                padding:0 1rem 0 0.5rem
+            }
             border-style: none;
             .mainTitle{
                 font-size:x-large
