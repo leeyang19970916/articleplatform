@@ -1,9 +1,14 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useState } from "react"
 import { Route, NavLink } from "react-router-dom";
 import SortTagsBtn from "./sort_tagsBtn";
-const tagsArray = [{ id: "q1", name: "癌症" }, { id: "q22", name: "高血壓" }, { id: "88ffff", name: "飲食" }, { id: "q1rrrr", name: "體重" },]
+const initTagsArray = [{ id: "q1", name: "癌症" }, { id: "q22", name: "高血壓" }, { id: "88ffff", name: "飲食" }, { id: "q1rrrr", name: "體重" },]
 const Sort = () => {
-
+    const [tagsArray, setTagsArray] = useState(initTagsArray);
+    const removeTagHandler = (item) => {
+        let { id } = item
+        const newTagsArray = tagsArray.filter(item => item.id !== id)
+        setTagsArray(newTagsArray)
+    }
     return (
         <div className="bg-white my-2 sort py-2 px-3">
             <section className="px-2">
@@ -20,7 +25,7 @@ const Sort = () => {
                     </div>
                 </div>
                 <div>
-                    {tagsArray.map(item => <SortTagsBtn key={item.id} item={item}></SortTagsBtn>)}
+                    {tagsArray.map(item => <SortTagsBtn key={item.id} status={"sort"} removeTag={removeTagHandler} item={item}></SortTagsBtn>)}
                 </div>
             </section>
 

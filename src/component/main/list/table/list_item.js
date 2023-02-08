@@ -2,6 +2,7 @@ import React, { Fragment } from "react"
 import { Route, NavLink } from "react-router-dom"
 import TableTitle from "./tableTitle"
 import TableTags from "./tableTags"
+
 const ListItem = (props) => {
     let { item } = props
     console.log(item, "itemeee")
@@ -29,15 +30,17 @@ const ListItem = (props) => {
             <td>{like}</td>
             <td>{share}</td>
             <td>
-                <div className="btn-group">
+                <div className="btn-group table-group">
                     <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         ...
                     </button>
                     <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">Action</a></li>
-                        <li><a className="dropdown-item" href="#">Another action</a></li>
-                        <li><a className="dropdown-item" href="#">Something else here</a></li>
-                        <li><a className="dropdown-item" href="#">Separated link</a></li>
+                        <li><a className="dropdown-item" href="#">預覽頁面</a></li>
+                        <li><a className="dropdown-item" href="#">編輯內文</a></li>
+                        <li><a className="dropdown-item" href="#">編輯紀錄</a></li>
+                        <li><a className="dropdown-item" href="#">刪除文章</a></li>
+                        <li><a className="dropdown-item" href="#">下載文章</a></li>
+
                     </ul>
                 </div>
             </td>

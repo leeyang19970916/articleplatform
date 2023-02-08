@@ -10,21 +10,48 @@ table {
         td {
             padding-top: 0;
             padding-bottom: 0;
-            &.tableTitle{
-                padding:0 1rem 0 0.5rem
+
+            &.tableTitle {
+                padding: 0 1rem 0 0.5rem
             }
+
             border-style: none;
-            .mainTitle{
-                font-size:x-large
+
+            .mainTitle {
+                font-size: x-large
             }
-            .minTitle{
+
+            .minTitle {
                 font-size: medium;
             }
-            .date{
+
+            .date {
                 text-align: right;
                 font-size: xx-small;
             }
         }
 
+    }
+}
+
+.table-group {
+    .dropdown-toggle {
+        padding: 0 10px;
+        border-radius: 50px;
+
+        &::after {
+            display: none;
+        }
+    }
+    ul{
+        font-size: small;
+    }
+    .dropdown-menu {
+        &.date{
+            font-size:xx-small;
+        }
+        li{
+            text-align: center;
+        }
     }
 }

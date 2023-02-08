@@ -6,14 +6,8 @@ const TableTags = (props) => {
     if (!item.length) {
         return
     }
-
     const red = () => {
-        console.log("qqqqq")
     }
-
-
-console.log(item,"ppapppp")
-
     if (status === "tags") {
         return (
             <div className="d-flex">
@@ -23,7 +17,7 @@ console.log(item,"ppapppp")
     } else {
         return (
             <div>
-                {item.map(e => <div key={e.id} className="btn  text-primary px-1 d-table border"  onClick={red}>{e.name}</div>)}
+                {item.map(e => <div key={e.id} className="btn  text-primary px-1 d-table"  onClick={red}>{e.name}</div>)}
             </div>
         )
 

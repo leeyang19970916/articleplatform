@@ -17,9 +17,10 @@ const App = () => {
             <div className="h-100 bg-dark" style={{ width: '15%' }}>
                 <Navbar></Navbar>
             </div>
-            <div className="h-100 px-5 pt-4 pb-2" style={{ width: '85%',background:"rgb(241,241,241)" }}>
+            <div className="h-100" style={{ width: '85%', background: "rgb(241,241,241)" }}>
                 <Main></Main>
             </div>
+
 
         </div>
     )

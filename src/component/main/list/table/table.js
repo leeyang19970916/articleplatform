@@ -2,6 +2,9 @@ import React, { Fragment } from "react"
 import { Route, NavLink } from "react-router-dom"
 import ListItem from "./list_item"
 import Pages from "./pages"
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const array = [
     {
         id: "x1", image: "123", mainTitle: "qqqqq", minTitle: "aaaaaa",
@@ -100,10 +103,10 @@ const Table = () => {
                         <th scope="col" style={{width:"30%"}} className="tableTitle">標題</th>
                         <th scope="col" style={{width:"10%"}}>標籤</th>
                         <th scope="col" style={{width:"10%"}}>分類</th>
-                        <th scope="col"  style={{width:"1%"}}>眼</th>
-                        <th scope="col"  style={{width:"1%"}}>收</th>
-                        <th scope="col"  style={{width:"1%"}}>分</th>
-                        <th scope="col"  style={{width:"5%"}}></th>
+                        <th scope="col"  style={{width:"1%"}}><FontAwesomeIcon icon="fa-regular fa-eye" /></th>
+                        <th scope="col"  style={{width:"1%"}}><FontAwesomeIcon icon="fa-regular fa-bookmark" /></th>
+                        <th scope="col"  style={{width:"1%"}}><FontAwesomeIcon icon="fa-solid fa-share-nodes" /></th>
+                        <th scope="col"  style={{width:"1%"}}></th>
                     </tr>
                 </thead>
                 <tbody>
