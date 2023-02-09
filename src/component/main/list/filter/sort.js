@@ -1,13 +1,28 @@
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useState,useRef } from "react"
 import { Route, NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import SortTagsBtn from "./sort_tagsBtn";
 const initTagsArray = [{ id: "q1", name: "癌症" }, { id: "q22", name: "高血壓" }, { id: "88ffff", name: "飲食" }, { id: "q1rrrr", name: "體重" },]
 const Sort = () => {
+    const tagRef=useRef()
     const [tagsArray, setTagsArray] = useState(initTagsArray);
     const removeTagHandler = (item) => {
         let { id } = item
         const newTagsArray = tagsArray.filter(item => item.id !== id)
         setTagsArray(newTagsArray)
+    }
+    const addTagInSortHandler=()=>{
+        let value= tagRef.current.value.trim()
+        if (!value) {
+            return
+        }
+        let tag={
+            id:Math.random(),
+            name:tagRef.current.value
+        }
+        setTagsArray([...tagsArray,tag])
+        tagRef.current.value=""
     }
     return (
         <div className="bg-white my-2 sort py-2 px-3">
@@ -16,12 +31,14 @@ const Sort = () => {
                     <div className="fw-bolder text-primary" style={{ width: "20%" }}>搜尋文章</div>
                     <div class="input-group ">
                         <input type="text" class="form-control" placeholder="請輸入標題" aria-label="請輸入標題" aria-describedby="basic-addon1" />
+                        
                     </div>
                 </div>
                 <div className="d-flex align-items-center mb-3">
                     <div className="fw-bolder text-primary" style={{ width: "20%" }}>搜尋標籤</div>
                     <div class="input-group ">
-                        <input type="text" class="form-control" placeholder="請輸入 #hashtag" aria-label="請輸入 #hashtag" aria-describedby="basic-addon1" />
+                        <input ref={tagRef} type="text" class="form-control" placeholder="請輸入 #hashtag" aria-label="請輸入 #hashtag" aria-describedby="basic-addon1" />
+                        <button type="button" onClick={addTagInSortHandler} class="btn btn-primary"><FontAwesomeIcon icon="fa-solid fa-plus" /></button>
                     </div>
                 </div>
                 <div>

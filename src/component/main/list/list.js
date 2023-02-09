@@ -10,7 +10,7 @@ import "../../../scss/list/list.scss"
 const List = () => {
 
     return (
-            <div className=" px-5 pt-4 pb-2">
+            <div className=" h-100 px-5 pt-4 pb-2">
             <Header title={"list"}></Header>
             <Sort></Sort>
             <Table></Table>

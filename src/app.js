@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useState,useEffect } from "react"
 import { Route, } from "react-router-dom"
 import Navbar from "./component/navbar/navbar";
 import Main from "./component/main/main";
@@ -10,14 +10,22 @@ const App = () => {
     const initHeight = window.innerHeight;
 
     const [height, setHeight] = useState(initHeight);
-    // setHeight(initHeight)
-    console.log(height);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setHeight(window.innerHeight);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
     return (
-        <div className="w-100 d-flex" style={{ height: height }}>
+        <div className="w-100 d-flex overflow-hidden"  style={{ height: height }}>
             <div className="h-100 bg-dark" style={{ width: '15%' }}>
                 <Navbar></Navbar>
             </div>
-            <div className="h-100" style={{ width: '85%', background: "rgb(241,241,241)" }}>
+            <div className="h-100 " style={{ width: '85%', background: "rgb(241,241,241)",overflowY:"auto" }}>
                 <Main></Main>
             </div>
 

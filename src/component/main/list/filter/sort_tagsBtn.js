@@ -12,7 +12,7 @@ const SortTagsBtn = (props) => {
         </Fragment>)
     } else {
         return (<Fragment>
-            <button type="button" className="btn btn-primary px-2 py-1 me-3 mb-1 tag-btn">{item.name} <a href="#" className="text-secondary" onClick={removeTagHandler}>x</a></button>
+            <button type="button" className="btn btn-primary px-2 py-1 me-3 mb-3 tag-btn">{item.name} <a href="#" className="text-secondary" onClick={removeTagHandler}>x</a></button>
         </Fragment>)
     }
 

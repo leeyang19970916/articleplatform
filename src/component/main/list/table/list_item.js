@@ -2,6 +2,7 @@ import React, { Fragment } from "react"
 import { Route, NavLink } from "react-router-dom"
 import TableTitle from "./tableTitle"
 import TableTags from "./tableTags"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ListItem = (props) => {
     let { item } = props
@@ -29,10 +30,10 @@ const ListItem = (props) => {
             <td>{view}</td>
             <td>{like}</td>
             <td>{share}</td>
-            <td>
+            <td className="text-center">
                 <div className="btn-group table-group">
-                    <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        ...
+                    <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <FontAwesomeIcon icon="fa-solid fa-ellipsis" />
                     </button>
                     <ul className="dropdown-menu">
                         <li><a className="dropdown-item" href="#">預覽頁面</a></li>

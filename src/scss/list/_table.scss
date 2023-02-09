@@ -1,6 +1,15 @@
 table {
     background: white;
-    border-radius: 10px;
+
+    // border-radius: 10px;
+    &.table-striped {
+        thead{
+            // tr{
+            //     border-radius: 20px;
+            // }
+        }
+        border-radius: 10px;
+    }
 
     tbody {
         th {
@@ -8,6 +17,7 @@ table {
         }
 
         td {
+ 
             padding-top: 0;
             padding-bottom: 0;
 
@@ -38,19 +48,27 @@ table {
     .dropdown-toggle {
         padding: 0 10px;
         border-radius: 50px;
+        height: 30px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         &::after {
             display: none;
         }
     }
-    ul{
+
+    ul {
         font-size: small;
     }
+
     .dropdown-menu {
-        &.date{
-            font-size:xx-small;
+        &.date {
+            font-size: xx-small;
         }
-        li{
+
+        li {
             text-align: center;
         }
     }
