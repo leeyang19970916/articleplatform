@@ -3,8 +3,9 @@ import { Route, NavLink } from "react-router-dom"
 import ListItem from "./list_item"
 import Pages from "./pages"
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+// import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 const array = [
     {
         id: "x1", image: "123", mainTitle: "qqqqq", minTitle: "aaaaaa",
@@ -96,18 +97,22 @@ const Table = () => {
     return (
         <Fragment>
             <table className="table table-striped">
+
+
+
                 <thead>
                     <tr>
-                        <th scope="col"  style={{width:"1%"}}></th>
-                        <th scope="col" style={{width:"10%"}}>預覽圖</th>
-                        <th scope="col" style={{width:"30%"}} className="tableTitle">標題</th>
-                        <th scope="col" style={{width:"10%"}}>標籤</th>
-                        <th scope="col" style={{width:"10%"}}>分類</th>
-                        <th scope="col"  style={{width:"1%"}}><FontAwesomeIcon icon="fa-regular fa-eye" /></th>
-                        <th scope="col"  style={{width:"1%"}}><FontAwesomeIcon icon="fa-regular fa-bookmark" /></th>
-                        <th scope="col"  style={{width:"1%"}}><FontAwesomeIcon icon="fa-solid fa-share-nodes" /></th>
-                        <th scope="col"  style={{width:"1%"}}></th>
+                        <th scope="col" style={{ width: "1%" }}></th>
+                        <th scope="col" style={{ width: "5%" }}>預覽圖</th>
+                        <th scope="col" style={{ width: "20%" }} className="tableTitle">標題</th>
+                        <th scope="col" style={{ width: "10%" }}>標籤</th>
+                        <th scope="col" style={{ width: "10%" }}>分類</th>
+                        <th scope="col" style={{ width: "1%" }}><FontAwesomeIcon icon="fa-regular fa-eye" /></th>
+                        <th scope="col" style={{ width: "1%" }}><FontAwesomeIcon icon="fa-regular fa-bookmark" />            </th>
+                        <th scope="col" style={{ width: "1%" }}><FontAwesomeIcon icon="fa-solid fa-share-nodes" />  </th>
+                        <th scope="col" style={{ width: "1%" }}></th>
                     </tr>
+
                 </thead>
                 <tbody>
                     {listUI}
