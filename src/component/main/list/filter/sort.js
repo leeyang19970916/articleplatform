@@ -15,13 +15,13 @@ const Sort = () => {
                 <div className="d-flex align-items-center mb-3">
                     <div className="fw-bolder text-primary" style={{ width: "20%" }}>搜尋文章</div>
                     <div class="input-group ">
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                        <input type="text" class="form-control" placeholder="請輸入標題" aria-label="請輸入標題" aria-describedby="basic-addon1" />
                     </div>
                 </div>
                 <div className="d-flex align-items-center mb-3">
                     <div className="fw-bolder text-primary" style={{ width: "20%" }}>搜尋標籤</div>
                     <div class="input-group ">
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                        <input type="text" class="form-control" placeholder="請輸入 #hashtag" aria-label="請輸入 #hashtag" aria-describedby="basic-addon1" />
                     </div>
                 </div>
                 <div>
@@ -51,10 +51,10 @@ const Sort = () => {
                 <div className="d-flex align-items-center mb-3">
                     <div className="fw-bolder text-primary" style={{ width: "20%" }}>發佈時間</div>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="2023/2/7" aria-label="Username" />
+                        <input type="text" class="form-control" placeholder="2023/02/07" aria-label="Username" />
                         <div className="px-2 d-flex align-items-center">~</div>
                         {/* <span class="">~</span> */}
-                        <input type="text" class="form-control" placeholder="2023/6/7" aria-label="Server" />
+                        <input type="text" class="form-control" placeholder="2023/06/07" aria-label="Server" />
                     </div>
                 </div>
 
