@@ -1,15 +1,14 @@
-import React, { Fragment } from "react"
-import { Route, NavLink } from "react-router-dom"
+import React from "react"
+// import { Route, NavLink } from "react-router-dom"
 import TableTitle from "./tableTitle"
 import TableTags from "./tableTags"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ListItem = (props) => {
     let { item } = props
-    console.log(item, "itemeee")
-    let { mainTitle, minTitle, date, id, category, like, view, share, tags } = item
+    let { majTitle, minTitle, date, id, category, like, view, share, tags } = item
     let TITLE = {
-        mainTitle, minTitle, date
+        majTitle, minTitle, date
     }
     // title 
     // min title

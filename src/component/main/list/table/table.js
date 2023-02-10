@@ -3,10 +3,13 @@ import { Route, NavLink } from "react-router-dom"
 import ListItem from "./list_item"
 import Pages from "./pages"
 import "../../../../scss/list/table-border.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector, useDispatch } from 'react-redux';
+// import { addTag, majTitleHandler, minTitleHandler, removeTag } from "../../../store/articleSlice"
+
 const array = [
     {
-        id: "x1", image: "123", mainTitle: "qqqqq", minTitle: "aaaaaa",
+        id: "x1ppottruyrj", image: "123", content: "", majTitle: "qqqqq", minTitle: "aaaaaa",
         tags: [{
             id: "qwer",
             name: "體重"
@@ -28,7 +31,7 @@ const array = [
         date: "2023/2/6"
     },
     {
-        id: "x1qw", image: "123", mainTitle: "wwwwww", minTitle: "ssssss",
+        id: "x1po;po;qw", image: "123", content: "", majTitle: "wwwwww", minTitle: "ssssss",
         tags: [{
             id: "qwer",
             name: "體重"
@@ -49,7 +52,7 @@ const array = [
         date: "2023/2/6"
     },
     {
-        id: "x1bgfb", image: "123", mainTitle: "eeeeeee", minTitle: "ddddddd",
+        id: "x1bytuiytugfb", image: "123", content: "", majTitle: "eeeeeee", minTitle: "ddddddd",
         tags: [{
             id: "qwer",
             name: "體重"
@@ -69,7 +72,7 @@ const array = [
         date: "2023/2/6"
     },
     {
-        id: "x1lytgwrt", image: "123", mainTitle: "rrrrrrrrr", minTitle: "ffffffffff",
+        id: "x1lyti56gwrt", image: "123", content: "", majTitle: "rrrrrrrrr", minTitle: "ffffffffff",
         tags: [{
             id: "qwer",
             name: "體重"
@@ -89,90 +92,7 @@ const array = [
         date: "2023/2/6"
     },
     {
-        id: "x1", image: "123", mainTitle: "qqqqq", minTitle: "aaaaaa",
-        tags: [{
-            id: "qwer",
-            name: "體重"
-        }, {
-            id: "eeerrr",
-            name: "飲食"
-        }],
-        category: [{
-            id: "tttttgfgf",
-            name: "熱門文章"
-        }, {
-            id: "iktuiktuytryjyy",
-            name: "飲食管理"
-        }],
-
-        view: 96,
-        like: 23,
-        share: 31,
-        date: "2023/2/6"
-    },
-    {
-        id: "x1qw", image: "123", mainTitle: "wwwwww", minTitle: "ssssss",
-        tags: [{
-            id: "qwer",
-            name: "體重"
-        }, {
-            id: "eeerrr",
-            name: "飲食"
-        }],
-        category: [{
-            id: "tttttgfgf",
-            name: "熱門文章"
-        }, {
-            id: "iktuiktuytryjyy",
-            name: "飲食管理"
-        }],
-        view: 96,
-        like: 23,
-        share: 31,
-        date: "2023/2/6"
-    },
-    {
-        id: "x1bgfb", image: "123", mainTitle: "eeeeeee", minTitle: "ddddddd",
-        tags: [{
-            id: "qwer",
-            name: "體重"
-        }, {
-            id: "eeerrr",
-            name: "飲食"
-        }], category: [{
-            id: "tttttgfgf",
-            name: "熱門文章"
-        }, {
-            id: "iktuiktuytryjyy",
-            name: "飲食管理"
-        }],
-        view: 96,
-        like: 23,
-        share: 31,
-        date: "2023/2/6"
-    },
-    {
-        id: "x1lytgwrt", image: "123", mainTitle: "rrrrrrrrr", minTitle: "ffffffffff",
-        tags: [{
-            id: "qwer",
-            name: "體重"
-        }, {
-            id: "eeerrr",
-            name: "飲食"
-        }], category: [{
-            id: "tttttgfgf",
-            name: "熱門文章"
-        }, {
-            id: "iktuiktuytryjyy",
-            name: "飲食管理"
-        }],
-        view: 96,
-        like: 23,
-        share: 31,
-        date: "2023/2/6"
-    },
-    {
-        id: "x1", image: "123", mainTitle: "qqqqq", minTitle: "aaaaaa",
+        id: "x1qwerqwer", image: "123", content: "", majTitle: "qqqqq", minTitle: "aaaaaa",
         tags: [{
             id: "qwer",
             name: "體重"
@@ -194,7 +114,7 @@ const array = [
         date: "2023/2/6"
     },
     {
-        id: "x1qw", image: "123", mainTitle: "wwwwww", minTitle: "ssssss",
+        id: "x1qwe3rqwerhytjyu", image: "123", content: "", majTitle: "wwwwww", minTitle: "ssssss",
         tags: [{
             id: "qwer",
             name: "體重"
@@ -215,7 +135,7 @@ const array = [
         date: "2023/2/6"
     },
     {
-        id: "x1bgfb", image: "123", mainTitle: "eeeeeee", minTitle: "ddddddd",
+        id: "x1bupio;;gfb", image: "123", content: "", majTitle: "eeeeeee", minTitle: "ddddddd",
         tags: [{
             id: "qwer",
             name: "體重"
@@ -235,7 +155,7 @@ const array = [
         date: "2023/2/6"
     },
     {
-        id: "x1lytgwrt", image: "123", mainTitle: "rrrrrrrrr", minTitle: "ffffffffff",
+        id: "x1lyopuipuioptgwrt", image: "123", content: "", majTitle: "rrrrrrrrr", minTitle: "ffffffffff",
         tags: [{
             id: "qwer",
             name: "體重"
@@ -257,7 +177,16 @@ const array = [
 ]
 const Table = () => {
     // map打listItem渲染出來
-    const listUI = array.map(item => <ListItem key={item.id} item={item}></ListItem>)
+    // state.list
+    const listSlice = useSelector(state => state.list)
+    console.log(listSlice,"listSlice")
+    let listUI = ""
+    if (!listSlice) {
+        listUI = "無"
+    } else {
+        listUI = listSlice.map(item => <ListItem key={item.id} item={item}></ListItem>)
+
+    }
     return (
         <Fragment>
             <table className="table table-striped table-hover">

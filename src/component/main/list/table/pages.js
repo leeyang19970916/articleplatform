@@ -25,7 +25,3 @@ const Pages = () => {
     )
 }
 export default Pages
-
-class wwww extends Component{
-    render
-}

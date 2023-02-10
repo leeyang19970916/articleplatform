@@ -22,6 +22,8 @@ const Write = () => {
         </div>
         <div className="d-flex w-100" style={styles}>
             <WriteSetting></WriteSetting>
+            {/* 標籤 分類 標題  圖片*/}
+            {/* 內容 */}
             <CKEditor></CKEditor>
         </div>
     </Fragment>)

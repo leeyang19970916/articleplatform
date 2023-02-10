@@ -11,15 +11,15 @@ const Main = () => {
     return (
         <Fragment>
             <Switch>
-                <Route path="/home" exact>
+                <Route path="/" exact>
                     <Home></Home>
                     {/* 首頁 */}
                 </Route>
-                <Route path="/articleList" exact>
+                <Route path="/list">
                     <List></List>
                     {/* 文章列表 */}
                 </Route>
-                <Route path="/addArticle" exact>
+                <Route path="/addArticle" >
                     <Write></Write>
                     {/* 新增文章 */}
                 </Route>
@@ -34,7 +34,7 @@ const Main = () => {
                 </Route>
                 <Route path="*" >
                     {/* 亂打的話導入 */}
-                    <Redirect to="/home" />
+                    <Redirect to="/" />
                 </Route>
             </Switch>
         </Fragment>
