@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ListItem = (props) => {
     let { item } = props
+    console.log(item,"item")
     let { majTitle, minTitle, date, id, category, like, view, share, tags } = item
     let TITLE = {
         majTitle, minTitle, date

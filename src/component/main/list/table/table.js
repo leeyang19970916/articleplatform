@@ -178,22 +178,37 @@ const array = [
 const Table = () => {
     // map打listItem渲染出來
     // state.list
+    // let articleSlice=useSelector(state => state.list)
+    // console.log(articleSlice,"artcile")
     let listSlice = useSelector(state => state.list)
     let sortSlice = useSelector(state => state.sort)
-    // const [listUI, setListUI] = useState(listSlice);
+    console.log(listSlice, "listttt")
+    // listSlice=listSlice.filter(item=>console.log(item,"itemmm"))
+    const [listUI, setListUI] = useState(listSlice);
     // console.log(listSlice, "UI列表", sortSlice, "sortSlice")
-    let listUI = ""
-    if (!listSlice) {
-        // setListUI([])
-        listUI = []
-    } else {
-        listUI = [...listSlice]
-    }
+    // let listUI = ""
+    // if (!listSlice) {
+    //     // setListUI([])
+    //     listUI = []
+    // } else {
+    //     listUI = [...listSlice]
+    // }
 
     useEffect(() => {
-        console.log("render yes")
+
         let titleFilter = sortSlice.title.toLowerCase()
         let tagsFilter = sortSlice.tags
+        let newListSlice=""
+        if (titleFilter || tagsFilter) {
+            newListSlice= listSlice.filter(item =>
+                item.majTitle.toLowerCase().includes(titleFilter) || item.minTitle.toLowerCase().includes(titleFilter))
+
+            newListSlice=newListSlice.filter(item => console.log(item,"item"));
+        }
+        setListUI(newListSlice)
+
+        console.log("render yes", titleFilter, tagsFilter, "listSlice", listSlice)
+
         // let
         // listUI = listUI.filter(item => item.toLowerCase().includes(inputValue.toLowerCase()))
         // setFilteredArray(

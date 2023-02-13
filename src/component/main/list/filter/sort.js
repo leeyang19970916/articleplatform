@@ -32,7 +32,9 @@ const Sort = () => {
     }
     const titleHandler=(e)=>{
         setSortTitle(e.target.value)
-        dispatch(setTitleHandler(sortTitle))
+
+        dispatch(setTitleHandler(e.target.value))
+        // console.log(e.target.value,"e.target.value",sortTitle,"sortTitle")
     }
 
     return (

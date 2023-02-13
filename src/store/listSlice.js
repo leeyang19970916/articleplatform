@@ -6,8 +6,9 @@ const listSlice = createSlice({
     reducers: {
         addList(state, action) {
             let item=action.payload
+             console.log(item,"itemitemitemitemitemitem")
             state.push(item)
-            // console.log(action)
+           
         },
         removeList(state, action) {
             console.log(action)

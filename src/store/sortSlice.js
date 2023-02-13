@@ -7,7 +7,7 @@ const initSort = {
 
 }
 const sortSlice = createSlice({
-    name: "Sort",
+    name: "sort",
     initialState: initSort,
     reducers: {
         setTitleHandler(state,action){

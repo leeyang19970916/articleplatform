@@ -3,10 +3,10 @@ import { Route, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const TableTitle = (props) => {
-    let { date, mainTitle, minTitle } = props.item
+    let { date, majTitle, minTitle } = props.item
     return (
         <Fragment>
-            <div className="text-dark mainTitle" >{mainTitle}</div>
+            <div className="text-dark mainTitle" >{majTitle}</div>
             <div className="text-dark minTitle">{minTitle}</div>
             <div className="dropdown table-group  d-flex justify-content-end">
                 <div className="text-secondary date  dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> {date} </div>
