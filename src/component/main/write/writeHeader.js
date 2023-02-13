@@ -3,7 +3,7 @@ import React, { Component, Fragment } from "react"
 import { useRef, useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { resetState, idAndDateBuild } from "../../../store/articleSlice";
+import { resetState, buildIDandDate } from "../../../store/articleSlice";
 import { addList } from "../../../store/listSlice";
 
 const Today = () => {
@@ -35,14 +35,11 @@ const WriteSetting = (props) => {
     //     }, [headerHeight])
     const saveArticleHandler = () => {
         let item = Today()
-        // console.log(item,"item")
-        dispatch(idAndDateBuild(item))
+        dispatch(buildIDandDate(item))
+        // console.log(article,"articleeeee")
         dispatch(addList(article))
-
         dispatch(resetState())
-
         history.push("/list");
-        // console.log("qqq")
     }
     return (<Fragment>
         <div className="bg-white py-3 px-4 d-flex justify-content-end">

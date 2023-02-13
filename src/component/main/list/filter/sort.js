@@ -1,16 +1,21 @@
-import React, { Fragment, useState, useRef } from "react"
+import React, { Fragment, useState, useRef, useEffect } from "react"
 import { Route, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import SortTagsBtn from "./sort_tagsBtn";
+import { useDispatch } from "react-redux";
+import { addTagHandler,removeTagHandler,setTitleHandler } from "../../../../store/sortSlice";
 const initTagsArray = [{ id: "q1", name: "癌症" }, { id: "q22", name: "高血壓" }, { id: "88ffff", name: "飲食" }, { id: "q1rrrr", name: "體重" },]
 const Sort = () => {
+    const [sortTitle, setSortTitle] = useState("");
+    let dispatch = useDispatch()
     const tagRef = useRef()
     const [tagsArray, setTagsArray] = useState(initTagsArray);
     const removeTagHandler = (item) => {
         let { id } = item
         const newTagsArray = tagsArray.filter(item => item.id !== id)
         setTagsArray(newTagsArray)
+        dispatch(addTagHandler(id))
     }
     const addTagInSortHandler = () => {
         let value = tagRef.current.value.trim()
@@ -22,16 +27,21 @@ const Sort = () => {
             name: tagRef.current.value
         }
         setTagsArray([...tagsArray, tag])
+        dispatch(addTagHandler(tag))
         tagRef.current.value = ""
     }
+    const titleHandler=(e)=>{
+        setSortTitle(e.target.value)
+        dispatch(setTitleHandler(sortTitle))
+    }
+
     return (
         <div className="bg-white my-2 sort py-2 px-3">
             <section className="px-2">
                 <div className="d-flex align-items-center mb-3">
                     <div className="fw-bolder text-primary" style={{ width: "20%" }}>搜尋文章</div>
                     <div className="input-group ">
-                        <input type="text" className="form-control" placeholder="請輸入標題" aria-label="請輸入標題" aria-describedby="basic-addon1" />
-
+                        <input value={sortTitle} onChange={titleHandler} type="text" className="form-control" placeholder="請輸入標題" aria-label="請輸入標題" aria-describedby="basic-addon1" />
                     </div>
                 </div>
                 <div className="d-flex align-items-center mb-3">

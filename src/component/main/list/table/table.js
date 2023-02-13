@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useEffect, useState } from "react"
 import { Route, NavLink } from "react-router-dom"
 import ListItem from "./list_item"
 import Pages from "./pages"
@@ -178,15 +178,46 @@ const array = [
 const Table = () => {
     // map打listItem渲染出來
     // state.list
-    const listSlice = useSelector(state => state.list)
-    console.log(listSlice,"listSlice")
+    let listSlice = useSelector(state => state.list)
+    let sortSlice = useSelector(state => state.sort)
+    // const [listUI, setListUI] = useState(listSlice);
+    // console.log(listSlice, "UI列表", sortSlice, "sortSlice")
     let listUI = ""
     if (!listSlice) {
-        listUI = "無"
+        // setListUI([])
+        listUI = []
     } else {
-        listUI = listSlice.map(item => <ListItem key={item.id} item={item}></ListItem>)
-
+        listUI = [...listSlice]
     }
+
+    useEffect(() => {
+        console.log("render yes")
+        let titleFilter = sortSlice.title.toLowerCase()
+        let tagsFilter = sortSlice.tags
+        // let
+        // listUI = listUI.filter(item => item.toLowerCase().includes(inputValue.toLowerCase()))
+        // setFilteredArray(
+        //     array.filter(item => item.toLowerCase().includes(inputValue.toLowerCase()))
+        //   );
+        // if (!titleFilter) {
+        // } else {
+        //     listUI = listSlice.filter(item => {
+        //         console.log("qqwqwe")
+        //         return item.majTitle.includes(titleFilter) || item.minTitle.includes(titleFilter)
+        //     })
+
+        // }
+
+        // if (!tagsFilter) {
+        // } else {
+        //     listUI = listSlice.filter(item => {
+        //         console.log("qqqqq")
+        //         return item.majTitle.includes(titleFilter) || item.minTitle.includes(titleFilter)
+        //     })
+        // }
+
+
+    }, [sortSlice.title, sortSlice.tags]);
     return (
         <Fragment>
             <table className="table table-striped table-hover">
@@ -205,7 +236,7 @@ const Table = () => {
 
                 </thead>
                 <tbody>
-                    {listUI}
+                    {listUI.map(item => <ListItem key={item.id} item={item}></ListItem>)}
 
                 </tbody>
             </table>

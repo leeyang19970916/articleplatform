@@ -4,7 +4,7 @@ import cloneDeep from 'lodash.clonedeep'
 //     {id:"",name:""}
 // ],
 
-const article = {
+let article = {
     majTitle: "",
     minTitle: "",
     tags: [],
@@ -55,12 +55,13 @@ const articleSlice = createSlice({
             // 這是連原始碼一起帶過來的
             return state
         },
-        idAndDateBuild(state, action) {
+        buildIDandDate(state, action) {
 
-            let item = action.payload
-            state.date = item.today
-            state.id = item.id
-            console.log(JSON.parse(JSON.stringify(state)),"JSON");
+            let {id,today} = action.payload
+
+            state.date = today
+            state.id = id
+            console.log(JSON.parse(JSON.stringify(state)),"redux")
             return state
 
         },
@@ -70,6 +71,6 @@ const articleSlice = createSlice({
         }
     }
 })
-export const { idAndDateBuild, resetState, changeImage, addTag, removeTag, majTitleHandler, minTitleHandler, contentHandler } = articleSlice.actions
+export const { buildIDandDate, resetState, changeImage, addTag, removeTag, majTitleHandler, minTitleHandler, contentHandler } = articleSlice.actions
 
 export default articleSlice.reducer
