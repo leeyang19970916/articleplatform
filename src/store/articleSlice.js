@@ -58,30 +58,10 @@ const articleSlice = createSlice({
             return state
         },
         buildID(state, action) {
-            
             state.id=action.payload
-            // console.log(q,"888888")
-            // state.id=q
-            // const newState={...state,id:q}
-            // return newState
-
-            // let {id,today} = action.payload
-
-            // state.date = 123
-            // state.id = 55516
-            // console.log(JSON.parse(JSON.stringify(state)),"redux")
-            // return state
-
         },
         buildDate(state,action){
             state.date=action.payload
-            // let q=action.payload
-            // console.log(q,"qqqqq")
-            // const newState={...state,date:q}
-            // return newState
-            // state.date=q
-            // return state
-
         },
         resetState(state, action) {
             state = JSON.parse(JSON.stringify(initArticle))

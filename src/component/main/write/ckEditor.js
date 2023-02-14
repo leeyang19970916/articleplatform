@@ -11,7 +11,7 @@ function CKEditorUI() {
     const [writeHeight, setWriteHeight] = useState(500);
     // console.log("幾次")
     const styles = {
-        width: "95%",
+        width: "90%",
         // height: "300px",
     };
     // useEffect(() => {

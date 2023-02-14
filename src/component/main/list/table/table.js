@@ -10,12 +10,26 @@ const filterTagsHandler = (data, tagArray) => {
     if (!tagArray) {
         return
     }
-    data.filter(item => {
-        item.tags.filter(item1 => {
-            let aaa = tagArray.some(item2 => item1.id === item2.id && item1.name === item2.name)
-            console.log("tagssssss", aaa)
+    data.forEach(e => {
+ 
+        e.tags.forEach(tag=>{
+            console.log( tag," e.tags")
+            tagArray.forEach(sortTag=>{
+                console.log( sortTag,"sortTag")
+                if (tag.name===sortTag.name) {
+                    return
+                }
+            })
         })
-    })
+        // e.tags=""
+    });
+    console.log(data,"data",tagArray,"tagArray")
+    // data.filter(item => {
+    //     item.tags.filter(item1 => {
+    //         let aaa = tagArray.some(item2 => item1.id === item2.id && item1.name === item2.name)
+    //         console.log("tagssssss", aaa)
+    //     })
+    // })
     return
 }
 const Table = () => {
@@ -35,6 +49,7 @@ const Table = () => {
                     item.minTitle.toLowerCase().includes(titleFilter)
             );
             // let a=filterTagsHandler(newListSlice,tagsFilter)
+            // 這邊要串API不用自己寫以上
             setListUI(newListSlice);
         }
 

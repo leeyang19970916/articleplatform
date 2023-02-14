@@ -3,11 +3,11 @@ import { Route, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import SortTagsBtn from "./sort_tagsBtn";
-import { useDispatch ,useSelector} from "react-redux";
-import { addTagHandler,removeTagHandler,setTitleHandler } from "../../../../store/sortSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addTagHandler, removeTagHandler, setTitleHandler } from "../../../../store/sortSlice";
 // const initTagsArray = [{ id: "q1", name: "癌症" }, { id: "q22", name: "高血壓" }, { id: "88ffff", name: "飲食" }, { id: "q1rrrr", name: "體重" },]
 const Sort = () => {
-    let sortSlice=useSelector(state=>state.sort)
+    let sortSlice = useSelector(state => state.sort)
     const [sortTitle, setSortTitle] = useState("");
     let dispatch = useDispatch()
     const tagRef = useRef()
@@ -32,7 +32,7 @@ const Sort = () => {
         dispatch(addTagHandler(tag))
         tagRef.current.value = ""
     }
-    const titleHandler=(e)=>{
+    const titleHandler = (e) => {
         // setSortTitle(e.target.value)
         dispatch(setTitleHandler(e.target.value))
     }
