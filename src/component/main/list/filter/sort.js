@@ -3,18 +3,20 @@ import { Route, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import SortTagsBtn from "./sort_tagsBtn";
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector} from "react-redux";
 import { addTagHandler,removeTagHandler,setTitleHandler } from "../../../../store/sortSlice";
-const initTagsArray = [{ id: "q1", name: "癌症" }, { id: "q22", name: "高血壓" }, { id: "88ffff", name: "飲食" }, { id: "q1rrrr", name: "體重" },]
+// const initTagsArray = [{ id: "q1", name: "癌症" }, { id: "q22", name: "高血壓" }, { id: "88ffff", name: "飲食" }, { id: "q1rrrr", name: "體重" },]
 const Sort = () => {
+    let sortSlice=useSelector(state=>state.sort)
     const [sortTitle, setSortTitle] = useState("");
     let dispatch = useDispatch()
     const tagRef = useRef()
-    const [tagsArray, setTagsArray] = useState(initTagsArray);
-    const removeTagHandler = (item) => {
+    const [tagsArray, setTagsArray] = useState([]);
+    const removeTagSortHandler = (item) => {
         let { id } = item
-        const newTagsArray = tagsArray.filter(item => item.id !== id)
-        setTagsArray(newTagsArray)
+        if (!id) {
+            return
+        }
         dispatch(removeTagHandler(id))
     }
     const addTagInSortHandler = () => {
@@ -26,12 +28,12 @@ const Sort = () => {
             id: Math.random(),
             name: tagRef.current.value
         }
-        setTagsArray([...tagsArray, tag])
+        // setTagsArray([...tagsArray, tag])
         dispatch(addTagHandler(tag))
         tagRef.current.value = ""
     }
     const titleHandler=(e)=>{
-        setSortTitle(e.target.value)
+        // setSortTitle(e.target.value)
         dispatch(setTitleHandler(e.target.value))
     }
 
@@ -41,7 +43,7 @@ const Sort = () => {
                 <div className="d-flex align-items-center mb-3">
                     <div className="fw-bolder text-primary" style={{ width: "20%" }}>搜尋文章</div>
                     <div className="input-group ">
-                        <input value={sortTitle} onChange={titleHandler} type="text" className="form-control" placeholder="請輸入標題" aria-label="請輸入標題" aria-describedby="basic-addon1" />
+                        <input value={sortSlice.title} onChange={titleHandler} type="text" className="form-control" placeholder="請輸入標題" aria-label="請輸入標題" aria-describedby="basic-addon1" />
                     </div>
                 </div>
                 <div className="d-flex align-items-center mb-3">
@@ -52,7 +54,7 @@ const Sort = () => {
                     </div>
                 </div>
                 <div>
-                    {tagsArray.map(item => <SortTagsBtn key={item.id} status={"sort"} removeTag={removeTagHandler} item={item}></SortTagsBtn>)}
+                    {sortSlice.tags.map(item => <SortTagsBtn key={item.id} status={"sort"} removeTag={removeTagSortHandler} item={item}></SortTagsBtn>)}
                 </div>
             </section>
 
@@ -80,7 +82,6 @@ const Sort = () => {
                     <div className="input-group">
                         <input type="text" className="form-control" placeholder="2023/02/07" aria-label="Username" />
                         <div className="px-2 d-flex align-items-center">~</div>
-                        {/* <span class="">~</span> */}
                         <input type="text" className="form-control" placeholder="2023/06/07" aria-label="Server" />
                     </div>
                 </div>
