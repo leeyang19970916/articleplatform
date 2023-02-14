@@ -26,6 +26,7 @@ const WriteSetting = (props) => {
     let dispatch = useDispatch()
     let history = useHistory()
     let article = useSelector(state => state.article)
+// console.log(article,"article有幾次 ")
     // let headerRef=useRef()
     // let [headerHeight,setHeaderHeight]=useState(0)
     //     useEffect(()=>{
@@ -34,12 +35,15 @@ const WriteSetting = (props) => {
     //         props.height(headerHeight)
     //     }, [headerHeight])
     const  saveArticleHandler = () => {
+        // 主標副標 內容至少都要有內容不然推額
         let {id,today} = Today()
-        console.log(id,"id",today,"today")
-        
+        // console.log(id,"id",today,"today")
+
         dispatch(buildID(id))
         dispatch(buildDate(today))
+        // article=useSelector(state => state.article)
         // console.log(article,"articleeeee")
+        article={...article,id,date:today}
         dispatch(addList(article))
         dispatch(resetState())
         history.push("/list");
