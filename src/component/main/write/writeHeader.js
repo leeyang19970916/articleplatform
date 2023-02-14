@@ -3,7 +3,7 @@ import React, { Component, Fragment } from "react"
 import { useRef, useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { resetState,buildDate,buildID } from "../../../store/articleSlice";
+import { resetState, buildDate, buildID } from "../../../store/articleSlice";
 import { addList } from "../../../store/listSlice";
 
 const Today = () => {
@@ -26,24 +26,20 @@ const WriteSetting = (props) => {
     let dispatch = useDispatch()
     let history = useHistory()
     let article = useSelector(state => state.article)
-// console.log(article,"article有幾次 ")
-    // let headerRef=useRef()
-    // let [headerHeight,setHeaderHeight]=useState(0)
-    //     useEffect(()=>{
-    //         let height=headerRef.current.getBoundingClientRect().height
-    //         setHeaderHeight(height)
-    //         props.height(headerHeight)
-    //     }, [headerHeight])
-    const  saveArticleHandler = () => {
+    const saveArticleHandler = () => {
         // 主標副標 內容至少都要有內容不然推額
-        let {id,today} = Today()
-        // console.log(id,"id",today,"today")
+        let { id, today } = Today()
 
         dispatch(buildID(id))
         dispatch(buildDate(today))
-        // article=useSelector(state => state.article)
-        // console.log(article,"articleeeee")
-        article={...article,id,date:today}
+        article = { ...article, id, date: today }
+        console.log(article,"article")
+        let {majTitle,minTitle,content}=article
+        if (!majTitle || !minTitle || !content) {
+            console.log("主標副標內文有一個沒值")
+            alert("主標副標內文有一個沒值")
+            return
+        }
         dispatch(addList(article))
         dispatch(resetState())
         history.push("/list");
@@ -53,6 +49,7 @@ const WriteSetting = (props) => {
             <button type="button" className="btn btn-primary px-4 mx-3" onClick={saveArticleHandler}>儲存文章</button>
             <button type="button" className="btn btn-outline-primary px-4 mx-3">預覽文章</button>
         </div>
+
     </Fragment>)
 }
 export default WriteSetting

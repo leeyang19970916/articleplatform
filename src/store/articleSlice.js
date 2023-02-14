@@ -12,7 +12,8 @@ let initArticle = {
     id: "",
     content: "",
     date: "",
-    category: [],
+    category: [
+        {id: 0.691816669949, name: '熱門文章'} ,{id: 0.69189995, name: '最新消息'}],
     image: "",
     like: 15,
     share: 52,
@@ -58,11 +59,11 @@ const articleSlice = createSlice({
         },
         buildID(state, action) {
             
-            let q=action.payload
+            state.id=action.payload
             // console.log(q,"888888")
             // state.id=q
-            const newState={...state,id:q}
-            return newState
+            // const newState={...state,id:q}
+            // return newState
 
             // let {id,today} = action.payload
 
@@ -73,16 +74,17 @@ const articleSlice = createSlice({
 
         },
         buildDate(state,action){
-            let q=action.payload
-            console.log(q,"qqqqq")
-            const newState={...state,date:q}
-            return newState
+            state.date=action.payload
+            // let q=action.payload
+            // console.log(q,"qqqqq")
+            // const newState={...state,date:q}
+            // return newState
             // state.date=q
             // return state
 
         },
         resetState(state, action) {
-            state = JSON.parse(JSON.stringify(action))
+            state = JSON.parse(JSON.stringify(initArticle))
             return state
         }
     }

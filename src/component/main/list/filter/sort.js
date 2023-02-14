@@ -15,7 +15,7 @@ const Sort = () => {
         let { id } = item
         const newTagsArray = tagsArray.filter(item => item.id !== id)
         setTagsArray(newTagsArray)
-        dispatch(addTagHandler(id))
+        dispatch(removeTagHandler(id))
     }
     const addTagInSortHandler = () => {
         let value = tagRef.current.value.trim()
@@ -32,9 +32,7 @@ const Sort = () => {
     }
     const titleHandler=(e)=>{
         setSortTitle(e.target.value)
-
         dispatch(setTitleHandler(e.target.value))
-        // console.log(e.target.value,"e.target.value",sortTitle,"sortTitle")
     }
 
     return (

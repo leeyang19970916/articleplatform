@@ -11,11 +11,6 @@ const ListItem = (props) => {
     let TITLE = {
         majTitle, minTitle, date
     }
-    // title 
-    // min title
-    // tags []
-    // edit
-    // date
     return (
         <tr>
             <th scope="row">
@@ -24,9 +19,9 @@ const ListItem = (props) => {
                 </div>
             </th>
             <td>image</td>
-            <td className="tableTitle"><TableTitle item={TITLE} /></td>
+            <td className="tableTitle pe-4"><TableTitle item={TITLE} /></td>
             <td>{tags && <TableTags status={"tags"} item={tags}></TableTags>}</td>
-            <td>{category && <TableTags status={"category"} item={category}></TableTags>}</td>
+            <td >{category && <TableTags status={"category"} item={category}></TableTags>}</td>
             <td>{view}</td>
             <td>{like}</td>
             <td>{share}</td>

@@ -6,18 +6,19 @@ const TableTags = (props) => {
     if (!item.length) {
         return
     }
-    const red = () => {
+    const addToSort = () => {
+        console.log("qqq")
     }
     if (status === "tags") {
         return (
             <div className="d-flex">
-                {item.map(e => <div key={e.id} className="btn text-primary px-1 d-table" onClick={red}>#{e.name}</div>)}
+                {item.map(e => <div key={e.id} className="btn text-primary px-1 d-table" onClick={addToSort}>#{e.name}</div>)}
             </div>
         )
     } else {
         return (
             <div>
-                {item.map(e => <div key={e.id} className="btn  text-primary px-1 d-table"  onClick={red}>{e.name}</div>)}
+                {item.map(e => <div key={e.id} className="btn  text-primary px-1 d-table"  onClick={addToSort}>{e.name}</div>)}
             </div>
         )
 

@@ -259,25 +259,14 @@ const array = [
     date: "2023/2/6",
   },
 ];
+const filterTagsHandler=(data,tagArray)=>{
+console.log(data,"data",tagArray,"tagggg")
+}
 const Table = () => {
   // map打listItem渲染出來
-  // state.list
-  // let articleSlice=useSelector(state => state.list)
-  // console.log(articleSlice,"artcile")
   let listSlice = useSelector((state) => state.list);
   let sortSlice = useSelector((state) => state.sort);
-  console.log(listSlice, "listttt");
-  // listSlice=listSlice.filter(item=>console.log(item,"itemmm"))
   const [listUI, setListUI] = useState(listSlice);
-  // console.log(listSlice, "UI列表", sortSlice, "sortSlice")
-  // let listUI = ""
-  // if (!listSlice) {
-  //     // setListUI([])
-  //     listUI = []
-  // } else {
-  //     listUI = [...listSlice]
-  // }
-
   useEffect(() => {
     let titleFilter = sortSlice.title.toLowerCase();
     let tagsFilter = sortSlice.tags;
@@ -288,35 +277,15 @@ const Table = () => {
           item.majTitle.toLowerCase().includes(titleFilter) ||
           item.minTitle.toLowerCase().includes(titleFilter)
       );
-
+    //   newListSlice的tag是分母
+    //   tagsFilter是條件 有符合就過關
+    // newListSlice.filter(item=>console.log(item,"iteeem","tagsFilter"))
+    //   newListSlice=filterTagsHandler(newListSlice,tagsFilter)
+console.log("再一次",sortSlice,"sortSlice")
     //   newListSlice = newListSlice.filter((item) => console.log(item, "item"));
       setListUI(newListSlice);
     }
 
-
-    console.log("render yes", titleFilter, tagsFilter, "listSlice", listSlice);
-
-    // let
-    // listUI = listUI.filter(item => item.toLowerCase().includes(inputValue.toLowerCase()))
-    // setFilteredArray(
-    //     array.filter(item => item.toLowerCase().includes(inputValue.toLowerCase()))
-    //   );
-    // if (!titleFilter) {
-    // } else {
-    //     listUI = listSlice.filter(item => {
-    //         console.log("qqwqwe")
-    //         return item.majTitle.includes(titleFilter) || item.minTitle.includes(titleFilter)
-    //     })
-
-    // }
-
-    // if (!tagsFilter) {
-    // } else {
-    //     listUI = listSlice.filter(item => {
-    //         console.log("qqqqq")
-    //         return item.majTitle.includes(titleFilter) || item.minTitle.includes(titleFilter)
-    //     })
-    // }
   }, [sortSlice.title, sortSlice.tags]);
   return (
     <Fragment>
