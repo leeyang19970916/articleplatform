@@ -3,13 +3,26 @@ import React from "react"
 import TableTitle from "./tableTitle"
 import TableTags from "./tableTags"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { removeList } from "../../../../store/listSlice"
+import { useDispatch } from "react-redux"
 
 const ListItem = (props) => {
     let { item } = props
+    let dispatch=useDispatch()
     console.log(item,"item")
     let { majTitle, minTitle, date, id, category, like, view, share, tags } = item
     let TITLE = {
         majTitle, minTitle, date
+    }
+    const previewPagesHandler=()=>{
+        dispatch(removeList(id))
+    }
+    const editPagesHandler=()=>{
+        dispatch(removeList(id))
+    }
+    const removePagesHandler=()=>{
+        console.log("qqq")
+        dispatch(removeList(id))
     }
     return (
         <tr>
@@ -20,7 +33,7 @@ const ListItem = (props) => {
             </th>
             <td>image</td>
             <td className="tableTitle pe-4"><TableTitle item={TITLE} /></td>
-            <td>{tags && <TableTags status={"tags"} item={tags}></TableTags>}</td>
+            <td >{tags && <TableTags status={"tags"} item={tags}></TableTags>}</td>
             <td >{category && <TableTags status={"category"} item={category}></TableTags>}</td>
             <td>{view}</td>
             <td>{like}</td>
@@ -31,10 +44,10 @@ const ListItem = (props) => {
                     <FontAwesomeIcon icon="fa-solid fa-ellipsis" />
                     </button>
                     <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">預覽頁面</a></li>
-                        <li><a className="dropdown-item" href="#">編輯內文</a></li>
-                        <li><a className="dropdown-item" href="#">編輯紀錄</a></li>
-                        <li><a className="dropdown-item" href="#">刪除文章</a></li>
+                        <li><a className="dropdown-item" href="#" onClick={previewPagesHandler}>預覽頁面</a></li>
+                        <li><a className="dropdown-item" href="#" onClick={editPagesHandler}>編輯內文</a></li>
+                        <li><a className="dropdown-item" href="#" >編輯紀錄</a></li>
+                        <li><a className="dropdown-item" href="#" onClick={removePagesHandler}>刪除文章</a></li>
                         <li><a className="dropdown-item" href="#">下載文章</a></li>
 
                     </ul>

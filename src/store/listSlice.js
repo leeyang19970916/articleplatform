@@ -6,12 +6,16 @@ const listSlice = createSlice({
     reducers: {
         addList(state, action) {
             let item=action.payload
-             console.log(item,"itemitemitemitemitemitem")
+            //  console.log(item,"itemitemitemitemitemitem")
             state.push(item)
            
         },
         removeList(state, action) {
-            console.log(action)
+            let id=action.payload
+            console.log(JSON.parse(JSON.stringify(state)),"qqqq")
+            state=state.filter(item=>item.id!==id)
+            console.log(JSON.parse(JSON.stringify(state)),"99999qqqqasdacfbhfgh")
+            return state
         },
     }
 })

@@ -22,10 +22,10 @@ const App = () => {
     }, []);
     return (
         <div className="w-100 d-flex overflow-hidden"  style={{ height: height }}>
-            <div className="h-100 bg-dark" style={{ width: '15%' }}>
+            <div className="h-100 bg-dark" style={{ width: '20%' }}>
                 <Navbar></Navbar>
             </div>
-            <div className="h-100 " style={{ width: '85%', background: "rgb(241,241,241)",overflowY:"auto" }}>
+            <div className="h-100 " style={{ width: '80%', background: "rgb(241,241,241)",overflowY:"auto" }}>
                 <Main></Main>
             </div>
 

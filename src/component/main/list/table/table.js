@@ -23,6 +23,7 @@ const Table = () => {
     let listSlice = useSelector((state) => state.list);
     let sortSlice = useSelector((state) => state.sort);
     const [listUI, setListUI] = useState(listSlice);
+    const [isChecked, setIsChecked] = useState(false);
     useEffect(() => {
         let titleFilter = sortSlice.title.toLowerCase();
         let tagsFilter = sortSlice.tags;
@@ -45,7 +46,7 @@ const Table = () => {
                     <tr>
                         <th scope="col" style={{ width: "1%" }}>
                             <div className="form-check d-flex justify-content-center">
-                                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                <input onChange={() => setIsChecked(!isChecked)} className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                             </div>
                         </th>
                         <th scope="col" style={{ width: "5%" }}>
